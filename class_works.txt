@@ -14,12 +14,23 @@ tar -czvf logs.tar.gz shellfilefol
 
 
 
+
+
+
+
+
 Task 2:
 
 
 #!/bin/bash
 read -p "Enter name of folder" fol
 cat /var/log/syslog | grep SHELL | grep $fol >>  /home/shashwat/DALab/logs.log
+
+
+
+
+
+
 
 
 
@@ -34,6 +45,11 @@ cat /var/log/syslog | grep $user >> /home/shashwat/DALab/logs.log
 in cron file:
 
 2 2 2 * 1 /home/shashwat/DALab/shellfile.sh
+
+
+
+
+
 
 
 
@@ -62,9 +78,34 @@ fi
 
 
 
+
+
+
+
 Task 5:
 
 tar -cvf myfol.log | tar -xvf myfol.log grep myfol
+
+
+
+
+
+
+
+Task 6:
+
+in shell file:
+#bin/bash
+egrep -i crontab mycreatedCronLogs.txt >> filteredlogs.txt
+sed 's/crontab/cronjob/1g' filteredlogs.txt
+du -sh filteredlogs.txt >> /dev/pts/0
+
+in cron file 
+2 2 2 * 1 /home/shashwat/DALab/shellfile.sh
+
+
+
+
 
 
 Task 7:
@@ -76,6 +117,10 @@ crontab -l | { cat; echo "* * * * * shellfile.sh"; } | crontab -
 in anacrontab:
 
 @daily 0 cron.daily1 /bin/bash shellfile.sh
+
+
+
+
 
 
 
