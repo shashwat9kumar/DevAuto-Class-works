@@ -1,0 +1,71 @@
+Task 1:
+
+
+in shell file:
+
+#!/bin/bash
+cat /var/log/syslog | grep cron >> /home/shashwat/DALab/logs.log
+cat /var/log/syslog | grep anacron >> /home/shashwat/DALab/logs.log
+
+on terminal:
+
+tar -czvf logs.tar.gz shellfilefol
+
+
+
+
+Task 2:
+
+
+#!/bin/bash
+read -p "Enter name of folder" fol
+cat /var/log/syslog | grep SHELL | grep $fol >>  /home/shashwat/DALab/logs.log
+
+
+
+Task 3:
+
+in shell file:
+
+#!/bin/bash
+cat /var/log/syslog | grep $date >> /home/shashwat/DALab/logs.log
+cat /var/log/syslog | grep $user >> /home/shashwat/DALab/logs.log
+
+in cron file:
+
+2 2 2 * 1 /home/shashwat/DALab/shellfile.sh
+
+
+
+
+Task 4:
+
+#bin/bash
+
+
+
+
+
+
+Task 5:
+
+tar -cvf myfol.log | tar -xvf myfol.log grep myfol
+
+
+Task 7:
+
+#bin/bash
+crontab -l | { cat; echo "* * * * * shellfile.sh"; } | crontab -
+
+
+in anacrontab:
+
+@daily 0 cron.daily1 /bin/bash shellfile.sh
+
+
+
+Task 8:
+
+in crontab:
+
+* * * * * echo "@daily 0 cron.daily1 /bin/bash shellfile.sh" >> /etc/anacrontab
