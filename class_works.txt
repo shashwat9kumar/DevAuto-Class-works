@@ -42,7 +42,22 @@ Task 4:
 
 #bin/bash
 
+if[-z "$1"]; then
+echo "ERROR" > $2; exit 1;
+fi
 
+dir=$(realpath $1)
+if[! -d $dir]; then
+echo "ERROR" > &2; exit 1;
+fi
+
+find $dir -type f -name "*.tar.gz" +min +$((60*24*2)) - exec rm \;
+path = $(realpath $0)
+
+if ! (crontab -l | grep -Fxq "0 0 * * * $path $dir");
+then
+crontab -l | { cat; echo"0 0 * * * $path $dir";} crontab -
+fi
 
 
 
